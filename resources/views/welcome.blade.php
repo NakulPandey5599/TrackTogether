@@ -1,136 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrackTogether - Stay Accountable</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackTogether - Stay Accountable</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-        }
-        .hero {
-            background: linear-gradient(135deg, #4e73df, #1cc88a);
-            color: white;
-            padding: 100px 0;
-        }
-        .feature-icon {
-            font-size: 40px;
-            color: #4e73df;
-        }
-        .cta-section {
-            background: #f8f9fc;
-            padding: 80px 0;
-        }
-        .footer {
-            background: #343a40;
-            color: white;
-            padding: 20px 0;
-        }
-    </style>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Animated Gradient Background */
+body::before {
+    content: '';
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, #6366f1, transparent 60%);
+    top: -200px;
+    left: -200px;
+    filter: blur(120px);
+    opacity: 0.6;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, #06b6d4, transparent 60%);
+    bottom: -200px;
+    right: -200px;
+    filter: blur(120px);
+    opacity: 0.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 80px;
+    position: relative;
+    z-index: 10;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #6366f1, #06b6d4);
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(99,102,241,0.5);
+}
+
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(to right, #fff, #9ca3af);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    margin-top: 40px;
+}
+
+.hero-buttons .btn {
+    margin: 0 10px;
+}
+
+/* Glass Cards */
+.section {
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+    padding: 40px 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card h3 {
+    margin-top: 20px;
+    font-size: 1.3rem;
+}
+
+.card p {
+    margin-top: 15px;
+    color: #94a3b8;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: #94a3b8;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .navbar {
+        padding: 20px;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">TrackTogether</a>
-
-        <div class="ms-auto">
-            <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Login</a>
-            <a href="{{ route('register') }}" class="btn btn-primary">Get Started</a>
-        </div>
+<div class="navbar">
+    <div><strong>TrackTogether</strong></div>
+    <div>
+        <a href="#" style="margin-right:20px;">Login</a>
+        <button class="btn btn-primary">Get Started</button>
     </div>
-</nav>
+</div>
 
-<!-- Hero Section -->
-<section class="hero text-center">
-    <div class="container">
-        <h1 class="display-4 fw-bold">Stay Accountable. Grow Together.</h1>
-        <p class="lead mt-3">
-            TrackTogether helps individuals and teams stay consistent by sharing progress, updating task status, and collaborating on live task boards.
-        </p>
-        <div class="mt-4">
-            <a href="{{ route('register') }}" class="btn btn-light btn-lg me-3">Create Free Account</a>
-            <a href="#features" class="btn btn-outline-light btn-lg">Learn More</a>
-        </div>
+<section class="hero">
+    <h1>Stay Accountable.<br>Grow Together.</h1>
+    <p>
+        A next-generation progress tracking platform designed for teams,
+        creators, and builders who want real accountability.
+    </p>
+    <div class="hero-buttons">
+        <button class="btn btn-primary">Create Free Account</button>
+        <button class="btn" style="background:rgba(255,255,255,dom);color:white;border:1px solid rgba(255,255,255,0.2);">
+            Learn More
+        </button>
     </div>
 </section>
 
-<!-- Features Section -->
-<section id="features" class="py-5">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-5">Core Features</h2>
+<section class="section">
+    <h2 style="font-size:2.5rem;font-weight:800;">Core Features</h2>
 
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="p-4 shadow-sm rounded">
-                    <div class="feature-icon mb-3">📊</div>
-                    <h5>Shared Progress Board</h5>
-                    <p>View and update tasks in real-time with your group members.</p>
-                </div>
-            </div>
+    <div class="cards">
+        <div class="card">
+            <div style="font-size:40px;">📊</div>
+            <h3>Live Progress Board</h3>
+            <p>Real-time updates shared across your accountability group.</p>
+        </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="p-4 shadow-sm rounded">
-                    <div class="feature-icon mb-3">👥</div>
-                    <h5>Group Accountability</h5>
-                    <p>Stay motivated by seeing everyone’s consistency and updates.</p>
-                </div>
-            </div>
+        <div class="card">
+            <div style="font-size:40px;">👥</div>
+            <h3>Group Motivation</h3>
+            <p>Stay consistent by seeing others show up every day.</p>
+        </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="p-4 shadow-sm rounded">
-                    <div class="feature-icon mb-3">📈</div>
-                    <h5>Progress Analytics</h5>
-                    <p>Track completion rates and performance with visual insights.</p>
-                </div>
-            </div>
+        <div class="card">
+            <div style="font-size:40px;">📈</div>
+            <h3>Growth Analytics</h3>
+            <p>Visual charts that make improvement measurable.</p>
         </div>
     </div>
 </section>
 
-<!-- How It Works -->
-<section class="bg-light py-5">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-5">How It Works</h2>
+<section class="section">
+    <h2 style="font-size:2.5rem;font-weight:800;">How It Works</h2>
 
-        <div class="row">
-            <div class="col-md-4">
-                <h5>1️⃣ Create or Join a Group</h5>
-                <p>Start your accountability journey by joining like-minded members.</p>
-            </div>
-            <div class="col-md-4">
-                <h5>2️⃣ Update Task Progress</h5>
-                <p>Mark tasks as completed and share daily progress updates.</p>
-            </div>
-            <div class="col-md-4">
-                <h5>3️⃣ Visualize Growth</h5>
-                <p>See real-time charts and progress tracking on shared boards.</p>
-            </div>
+    <div class="cards">
+        <div class="card">
+            <h3>1. Join or Create</h3>
+            <p>Start a private accountability group.</p>
+        </div>
+        <div class="card">
+            <h3>2. Update Daily</h3>
+            <p>Track task completion and share progress.</p>
+        </div>
+        <div class="card">
+            <h3>3. Watch Growth</h3>
+            <p>See visual metrics improve over time.</p>
         </div>
     </div>
 </section>
 
-<!-- Call To Action -->
-<section class="cta-section text-center">
-    <div class="container">
-        <h2 class="fw-bold">Ready to stay consistent?</h2>
-        <p class="mt-3">Create your first accountability group today.</p>
-        <a href="{{ route('register') }}" class="btn btn-primary btn-lg mt-3">
-            Create Your First Group
-        </a>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer text-center">
-    <div class="container">
-        <p class="mb-0">© {{ date('Y') }} TrackTogether. All Rights Reserved.</p>
-    </div>
+<footer class="footer">
+    © {{ date('Y') }} TrackTogether. Built for consistency.
 </footer>
 
 </body>
